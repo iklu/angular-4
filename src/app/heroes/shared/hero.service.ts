@@ -4,7 +4,7 @@
  * For example, the filename for SpecialSuperHeroService is special-super-hero.service.ts.
  */
 
-import { HEROES } from './mock-heroes';
+import { HEROES } from '../mock/mock-heroes';
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
 
@@ -31,6 +31,15 @@ export class HeroService {
             // Simulate server latency with 2 second delay
             setTimeout(() => resolve(this.getHeroes()), 2000);
         });
+    }
+
+    /**
+     * 
+     * @param id 
+     */
+    getHero(id: number): Promise<Hero> {
+        return this.getHeroes()
+             .then(heroes => heroes.find(hero => hero.id === id));
     }
 }
 

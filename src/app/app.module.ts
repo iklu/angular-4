@@ -1,24 +1,27 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { RouterModule }   from '@angular/router';
 
 import { AppComponent }        from './app.component';
-import { HeroDetailComponent } from './hero-detail.component';
-import { HeroesComponent }     from './heroes.component';
-import { HeroService }         from './hero.service';
+import { HeroDetailComponent } from './heroes/hero/hero-detail.component';
+import { HeroesComponent }     from './heroes/hero-list/heroes.component';
+import { DashboardComponent }     from './heroes/dashboard/dashboard.component';
+import { HeroService }         from './heroes/shared/hero.service';
+import { AppRoutingModule } from './heroes/app-routing.module';
 
 @NgModule({
   imports:      [ 
     BrowserModule, 
-    FormsModule 
-    ],
+    FormsModule,
+    AppRoutingModule
+  ],
 
     //declarations array contains a list of application components, pipes, and directives that belong to the module.
   declarations: [ 
     AppComponent,
     HeroDetailComponent,
-    HeroesComponent
+    HeroesComponent,
+    DashboardComponent
    ],
 
   //bootstrap
@@ -34,9 +37,3 @@ import { HeroService }         from './hero.service';
 
 export class AppModule {}
 
-RouterModule.forRoot([
-  {
-    path: 'heroes',
-    component: HeroesComponent
-  }
-])
